@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mps_app/common/constants/app_colors.dart';
+import 'package:mps_app/common/constants/app_text_style.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -13,18 +15,14 @@ class SplashPage extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-            Color(0xFF63B5AF), 
-            Color(0xFF438883)
+            AppColors.greenlightOne,
+            AppColors.greenlightTwo,
             ]
           )
         ),
-        child: const Text(
+        child: Text(
           'Eae man',
-          style: TextStyle(
-            fontSize: 50.0,
-            fontWeight: FontWeight.w700,
-            color: Color.fromARGB(254, 243, 239, 239)
-          ),
+          style: AppTextStyles.bigText.copyWith(color: AppColors.white)
         ),
       ),
     );
