@@ -20,10 +20,7 @@ class SplashPage extends StatelessWidget {
             ]
           )
         ),
-        child: Text(
-          'Eae man',
-          style: AppTextStyles.bigText.copyWith(color: AppColors.white)
-        ),
+        child: Image.asset('assets/images/man.png'),
       ),
     );
   }
