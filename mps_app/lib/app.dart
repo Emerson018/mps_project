@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mps_app/features/onboarding/onboarding_page.dart';
 import 'package:mps_app/features/splash/splash_page.dart';
 
 class App extends StatelessWidget {
@@ -7,7 +8,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SplashPage(
+      home: OnboardingPage(
       ),
     );
   }
