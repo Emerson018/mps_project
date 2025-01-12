@@ -1,16 +1,19 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:mps_app/common/constants/app_colors.dart';
 import 'package:mps_app/common/constants/app_text_style.dart';
+import 'package:mps_app/common/widgets/custom_text_button.dart';
 import 'package:mps_app/common/widgets/primary_button.dart';
 
 class OnboardingPage extends StatelessWidget {
-  const OnboardingPage({super.key}); // Usando o super parâmetro aqui
+  const OnboardingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.iceWhite,
       body: Align(
+        alignment: Alignment.center,
         child: Column(
           children: [
             const SizedBox(height: 60.0),
@@ -19,13 +22,13 @@ class OnboardingPage extends StatelessWidget {
               child: Image.asset('assets/images/man.png'),
             ),
             Text(
-              'texto aqui',
+              'Texto aqui',
               style: AppTextStyles.mediumText.copyWith(
                 color: AppColors.greenlightTwo,
               ),
             ),
             Text(
-              'outro aqui',
+              'Outro aqui',
               style: AppTextStyles.mediumText.copyWith(
                 color: AppColors.greenlightTwo,
               ),
@@ -37,14 +40,22 @@ class OnboardingPage extends StatelessWidget {
               ),
               child: PrimaryButton(
                 text: 'Get Started',
-                onPressed: () {},
+                onPressed: () {
+                  print('PrimaryButton pressed');
+                },
               ),
-            ), // Certifique-se de que PrimaryButton seja constante se não houver callbacks dinâmicos
-            Text(
-              'Já possui uma conta?',
-              style: AppTextStyles.smallText.copyWith(
-                color: AppColors.grey,
-              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Já possui uma conta?',
+                  style: AppTextStyles.smallText.copyWith(
+                    color: AppColors.grey,
+                  ),
+                ),
+                CustomTextButton(),
+              ],
             ),
             const SizedBox(height: 14.0),
           ],
