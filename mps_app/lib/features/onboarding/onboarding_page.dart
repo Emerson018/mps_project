@@ -40,7 +40,7 @@ class OnboardingPage extends StatelessWidget {
               ),
               child: PrimaryButton(
                 text: 'Get Started',
-                onPressed: () {
+                onPressed: () { 
                   print('PrimaryButton pressed');
                 },
               ),
