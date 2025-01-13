@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mps_app/common/constants/app_colors.dart';
 import 'package:mps_app/common/constants/app_text_style.dart';
 import 'package:mps_app/common/widgets/custom_text_button.dart';
+import 'package:mps_app/common/widgets/custom_text_form_field.dart';
 import 'package:mps_app/common/widgets/primary_button.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -13,60 +14,59 @@ class SignUpPage extends StatelessWidget {
       body: ListView(
         children: [
           Text(
-              'Começe criando a',
-              textAlign: TextAlign.center,
-              style: AppTextStyles.mediumText.copyWith(
+            'Começe criando a',
+            textAlign: TextAlign.center,
+            style: AppTextStyles.mediumText.copyWith(
               color: AppColors.greenlightTwo,
-              ),
             ),
-            Text(
-              'sua conta!',
-              textAlign: TextAlign.center,
-              style: AppTextStyles.mediumText.copyWith(
-                color: AppColors.greenlightTwo,
-              ),
+          ),
+          Text(
+            'sua conta!',
+            textAlign: TextAlign.center,
+            style: AppTextStyles.mediumText.copyWith(
+              color: AppColors.greenlightTwo,
             ),
-            Image.asset(
-              'assets/images/todolist.png',
-            ),
-            Form(
-              child: Column(
-                children: [
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: "Your Name",
-                      
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 32.0,
-                vertical: 16.0,
-              ),
-              child: PrimaryButton(
-                text: 'Criar Conta',
-                onPressed: () { 
-                },
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+          ),
+          Image.asset(
+            'assets/images/todolist.png',
+          ),
+          Form(
+            child: Column(
               children: [
-                Text(
-                  'Já possui uma conta?',
-                  style: AppTextStyles.smallText.copyWith(
-                    color: AppColors.grey,
-                  ),
+                CustomTextFormField(
+                  labelText: "Nome",
+                  hintText: "Elon Musk",
                 ),
-                CustomTextButton(),
               ],
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 32.0,
+              vertical: 16.0,
+            ),
+            child: PrimaryButton(
+              text: 'Criar Conta',
+              onPressed: () {
+                // Implementar lógica de criação de conta.
+              },
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Já possui uma conta?',
+                style: AppTextStyles.smallText.copyWith(
+                  color: AppColors.grey,
+                ),
+              ),
+              CustomTextButton(),
+            ],
+          ),
         ],
       ),
     );
   }
 }
+
