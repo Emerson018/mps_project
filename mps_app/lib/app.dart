@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mps_app/features/onboarding/onboarding_page.dart';
+import 'package:mps_app/features/sign_up/sign_up_page.dart';
 import 'package:mps_app/features/splash/splash_page.dart';
 
 class App extends StatelessWidget {
@@ -8,7 +9,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: OnboardingPage(
+      home: SignUpPage(
       ),
     );
   }

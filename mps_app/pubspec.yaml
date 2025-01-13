@@ -55,6 +55,7 @@ flutter:
 
   assets:
     - assets/images/man.png
+    - assets/images/todolist.png
 
   fonts:
     - family: Inter
