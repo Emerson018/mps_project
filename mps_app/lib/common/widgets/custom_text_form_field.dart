@@ -11,6 +11,8 @@ class CustomTextFormField extends StatefulWidget {
   final TextInputType? keyboardType;
   final int? maxLength;
   final TextInputAction? textInputAction;
+  final Widget? suffixIcon;
+  final bool? obscureText;
 
   const CustomTextFormField({
     super.key,
@@ -22,6 +24,8 @@ class CustomTextFormField extends StatefulWidget {
     this.keyboardType,
     this.maxLength,
     this.textInputAction,
+    this.suffixIcon,
+    this.obscureText,
   });
 
   @override
@@ -42,6 +46,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       ),
 
       child: TextFormField(
+        obscureText: widget.obscureText ?? false,
         textInputAction: widget.textInputAction,
         maxLength: widget.maxLength,
         keyboardType: widget.keyboardType,
@@ -49,6 +54,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         textCapitalization: widget.textCapitalization ?? TextCapitalization.none, 
           
         decoration: InputDecoration(
+          suffixIcon: widget.suffixIcon,
           hintText: widget.hintText,
           floatingLabelBehavior: FloatingLabelBehavior.always,
           labelText: widget.labelText?.toUpperCase(),

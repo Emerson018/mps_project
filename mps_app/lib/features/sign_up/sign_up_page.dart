@@ -3,6 +3,7 @@ import 'package:mps_app/common/constants/app_colors.dart';
 import 'package:mps_app/common/constants/app_text_style.dart';
 import 'package:mps_app/common/widgets/custom_text_button.dart';
 import 'package:mps_app/common/widgets/custom_text_form_field.dart';
+import 'package:mps_app/common/widgets/password_form_field.dart';
 import 'package:mps_app/common/widgets/primary_button.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -37,6 +38,14 @@ class SignUpPage extends StatelessWidget {
                   labelText: "Nome",
                   hintText: "Elon Musk",
                 ),
+                PasswordFormField(
+                  labelText: "Escolha sua senha",
+                  hintText: "********",
+                ),
+                PasswordFormField(
+                  labelText: "Confirme sua senha",
+                  hintText: "********",
+                ),
               ],
             ),
           ),
@@ -48,7 +57,6 @@ class SignUpPage extends StatelessWidget {
             child: PrimaryButton(
               text: 'Criar Conta',
               onPressed: () {
-                // Implementar lógica de criação de conta.
               },
             ),
           ),
