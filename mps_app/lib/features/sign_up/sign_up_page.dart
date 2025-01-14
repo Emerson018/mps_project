@@ -79,6 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     }
                     return null;
                   },
+                  helperText: "A senha deve conter no mínimo 8 caracteres.",
                 ),
 
                 PasswordFormField(
