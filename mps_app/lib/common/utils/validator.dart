@@ -21,22 +21,40 @@ class Validator {
         return "Este campo não pode estar vazio.";
       }
       if(value != null && !condition.hasMatch(value)){
-        return "Digite um nome válido";
+        return "Digite um email válido";
       }
       return null;
     } 
 
   static String? validatePassword(String? value) {
-        final condition = RegExp(r"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
+  // Verifica se o campo está vazio
+  if (value == null || value.isEmpty) {
+    return "Este campo não pode estar vazio.";
+  }
 
-        if(value != null && value.isEmpty){
-          return "Este campo não pode estar vazio.";
-        }
-        if(value != null && !condition.hasMatch(value)){
-          return "Digite um nome válido";
-        }
-        return null;
-      } 
+  // Lista para armazenar as mensagens de erro
+  List<String> errors = [];
+
+  // Critérios para a senha
+  if (!RegExp(r".{8,}").hasMatch(value)) {
+    errors.add("A senha deve ter no mínimo 8 caracteres.");
+  }
+  if (!RegExp(r"(?=.*[A-Z])").hasMatch(value)) {
+    errors.add("A senha deve conter pelo menos 1 letra maiúscula.");
+  }
+  if (!RegExp(r"(?=.*[a-z])").hasMatch(value)) {
+    errors.add("A senha deve conter pelo menos 1 letra minúscula.");
+  }
+  if (!RegExp(r"(?=.*\d)").hasMatch(value)) {
+    errors.add("A senha deve conter pelo menos 1 número.");
+  }
+  if (!RegExp(r"(?=.*[@$!%*?&])").hasMatch(value)) {
+    errors.add("A senha deve conter pelo menos 1 caractere especial (@, \$, !, %, *, ?, &).");
+  }
+
+  // Retorna as mensagens de erro concatenadas ou null se estiver tudo certo
+  return errors.isNotEmpty ? errors.join("\n") : null;
+}
 
     static String? validateConfirmPassword(String? first, String? second) {
       if(first != second){

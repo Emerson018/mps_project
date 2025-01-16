@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:mps_app/common/constants/app_colors.dart';
 import 'package:mps_app/common/constants/app_text_style.dart';
@@ -8,6 +6,8 @@ import 'package:mps_app/common/widgets/custom_text_button.dart';
 import 'package:mps_app/common/widgets/custom_text_form_field.dart';
 import 'package:mps_app/common/widgets/password_form_field.dart';
 import 'package:mps_app/common/widgets/primary_button.dart';
+import 'package:mps_app/features/sign_up/sign_up_controller.dart';
+import 'package:mps_app/features/sign_up/sign_up_state.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -17,9 +17,52 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-
   final _formKey = GlobalKey<FormState>();
   final _passwordController = TextEditingController();
+  final _controller = SignUpController();
+
+  @override
+  void dispose(){
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      if(_controller.state is SignUpLoadingState){
+        showDialog(
+          context: context,
+          builder: (context)=> Center(
+            child: CircularProgressIndicator(),
+          )
+        );
+      }
+      if(_controller.state is SignUpSuccessState){
+        Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context)=> const Scaffold(
+              body: Center(
+                child: Text("Nova Tela"),
+              ),
+            ),
+          ),
+        );
+      }
+      if(_controller.state is SignUpErrorState){
+        showDialog(
+          context: context,
+          builder: (context) => SizedBox(
+            height: 150.0,
+            child: Text("Erro ao logar. Tente Novamente."),
+          )
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,12 +103,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 CustomTextFormField(
                   labelText: "your email",
                   hintText: "john@email.com",
-                  validator: (value) {
-                    if(value != null && value.isEmpty){
-                      return "Este campo não pode estar vazio.";
-                    }
-                    return null;
-                  },
+                  validator: Validator.validateEmail,
                 ),
 
                 PasswordFormField(
@@ -97,7 +135,7 @@ class _SignUpPageState extends State<SignUpPage> {
               onPressed: () {
                 final valid = _formKey.currentState != null && _formKey.currentState!.validate();
                 if(valid){
-                  print('continuar logica de login'); 
+                  _controller.doSignUp();
                 }else {
                   print("erro ao logar!");
                 }
