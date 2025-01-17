@@ -70,7 +70,7 @@ class _SignUpPageState extends State<SignUpPage> {
       body: ListView(
         children: [
           Text(
-            'Começe criando a',
+            'Comece criando a',
             textAlign: TextAlign.center,
             style: AppTextStyles.mediumText.copyWith(
               color: AppColors.greenlightTwo,
